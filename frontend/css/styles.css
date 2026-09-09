@@ -1,0 +1,1106 @@
+/* =========================================================
+   TourInvest - Estilos generales
+   Paleta: Azul Oscuro #1E3A5F | Verde #2E8B57 | Blanco #FFFFFF
+   Basado en usabilidad_accesibilidad.md y navegacion.md
+   ========================================================= */
+
+:root {
+  --azul-oscuro: #1E3A5F;
+  --verde: #2E8B57;
+  --blanco: #FFFFFF;
+  --gris-claro: #F2F4F7;
+  --gris-texto: #6fa6d9;
+  --rojo-error: #C0392B;
+  --radius: 10px;
+  --font-base: "Segoe UI", Arial, sans-serif;
+
+  /* Normalización visual para aproximar el theme de info/styles */
+  --background: #F7F3EC;
+  --foreground: #1C2B1C;
+  --card: #FFFFFF;
+  --primary: #1D4A2B;
+  --secondary: #EDE8DC;
+  --muted: #EDE8DC;
+  --accent: #C09A3A;
+  --destructive: #d4183d;
+  --border: rgba(28, 43, 28, 0.12);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  background: var(--gris-claro);
+  color: var(--gris-texto);
+  font-size: 16px;
+  /* tipografía legible - accesibilidad */
+}
+
+a {
+  color: var(--azul-oscuro);
+}
+
+/* ---------- Contenedor de autenticación (Login / Registro) ---------- */
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--azul-oscuro), #14263e);
+  padding: 20px;
+}
+
+.auth-card {
+  background: var(--blanco);
+  width: 100%;
+  max-width: 420px;
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.auth-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.auth-logo .logo-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.auth-logo h1 {
+  font-size: 20px;
+  color: var(--azul-oscuro);
+  margin: 0;
+}
+
+.auth-logo p {
+  font-size: 13px;
+  color: #667;
+  margin: 4px 0 0;
+}
+
+form .field {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--azul-oscuro);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cfd6dd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.15);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: var(--verde);
+  color: var(--blanco);
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: #256e46;
+}
+
+.auth-links {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.error-msg {
+  background: #fdecea;
+  color: var(--rojo-error);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 14px;
+  display: none;
+}
+
+.help-msg {
+  background: #eaf6ef;
+  color: var(--verde);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 14px;
+  display: none;
+}
+
+/* ---------- Layout general del Dashboard (navegación jerárquica) ---------- */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: var(--azul-oscuro);
+  color: var(--blanco);
+  flex-shrink: 0;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 12px;
+}
+
+.sidebar .brand .logo-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.sidebar .brand span {
+  font-weight: 600;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-left: 3px solid transparent;
+  transition: background 0.15s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--verde);
+  color: var(--blanco);
+}
+
+.sidebar .logout {
+  margin-top: auto;
+  padding: 20px;
+}
+
+.sidebar .logout a {
+  color: #ffb4b4;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.main-content {
+  flex: 1;
+  padding: 18px 32px 28px 32px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Container centrado SOLO del contenido interno (cards/panels/tabs), sin tocar sidebar ni .top-header */
+.ti-content-container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+
+
+/* ---------- Header superior (estilo info/app/App.tsx) ---------- */
+
+.top-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(30, 58, 95, 0.12);
+}
+
+.top-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+}
+
+.top-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: default;
+  user-select: none;
+}
+
+.top-header__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--gris-claro);
+  object-fit: cover;
+}
+
+.top-header__titles {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.top-header__titles h1 {
+  margin: 0;
+  color: var(--azul-oscuro);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.top-header__titles p {
+  margin: 3px 0 0;
+  color: rgba(30, 58, 95, 0.62);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.top-header__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-chip {
+  background: var(--blanco);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-chip .user-name {
+  font-weight: 700;
+  color: var(--azul-oscuro);
+}
+
+.role-badge {
+  background: var(--verde);
+  color: var(--blanco);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.role-badge--admin {
+  background: rgba(30, 58, 95, 0.08);
+  color: var(--azul-oscuro);
+  border: 1px solid rgba(30, 58, 95, 0.16);
+}
+
+.role-badge--analista {
+  background: rgba(46, 139, 87, 0.12);
+  color: var(--verde);
+  border: 1px solid rgba(46, 139, 87, 0.22);
+}
+
+.role-badge--inversionista {
+  background: rgba(192, 154, 58, 0.14);
+  color: #C09A3A;
+  border: 1px solid rgba(192, 154, 58, 0.30);
+}
+
+.top-header__logout {
+
+  text-decoration: none;
+  background: rgba(30, 58, 95, 0.06);
+  color: var(--azul-oscuro);
+  border: 1px solid rgba(30, 58, 95, 0.12);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.top-header__logout:hover {
+  background: rgba(46, 139, 87, 0.10);
+  border-color: rgba(46, 139, 87, 0.28);
+}
+
+
+
+
+
+/* (compatibilidad) */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.topbar h2 {
+  color: var(--azul-oscuro);
+  margin: 0;
+}
+
+/* Compatibilidad: el proyecto actual usa header superior en dashboards */
+.top-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(30, 58, 95, 0.12);
+}
+
+.top-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+}
+
+/* Mejora look&feel similar a info: tablas con zebra suave */
+tr:nth-child(even) td {
+  background: rgba(30, 58, 95, 0.015);
+}
+
+/* Mejora estética de panel/tabs */
+section.panel {
+  border: 1px solid rgba(30, 58, 95, 0.08);
+}
+
+.tabs-row {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+
+.top-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+.top-header__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--gris-claro);
+  object-fit: cover;
+}
+
+.top-header__titles {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.top-header__titles h1 {
+  margin: 0;
+  color: var(--azul-oscuro);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.top-header__titles p {
+  margin: 3px 0 0;
+  color: rgba(30, 58, 95, 0.62);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.top-header__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-header__logout {
+  text-decoration: none;
+  background: rgba(30, 58, 95, 0.06);
+  color: var(--azul-oscuro);
+  border: 1px solid rgba(30, 58, 95, 0.12);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.top-header__logout:hover {
+  background: rgba(46, 139, 87, 0.10);
+  border-color: rgba(46, 139, 87, 0.28);
+}
+
+
+
+
+/* ---------- Tabs (equivalente a info App.tsx/Componentes) ---------- */
+
+.tabs-row {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid rgba(30, 58, 95, 0.12);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  border: 1px solid rgba(30, 58, 95, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--azul-oscuro);
+  font-weight: 800;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.tab-btn:hover {
+  border-color: rgba(46, 139, 87, 0.35);
+  background: rgba(46, 139, 87, 0.06);
+}
+
+.theme-admin .tab-btn--active {
+  color: #1E3A5F;
+  border-color: rgba(30, 58, 95, 0.65);
+  border-bottom: 3px solid #1E3A5F;
+  background: rgba(30, 58, 95, 0.12);
+}
+
+.theme-analista .tab-btn--active {
+  color: #2E8B57;
+  border-color: rgba(46, 139, 87, 0.65);
+  border-bottom: 3px solid #2E8B57;
+  background: rgba(46, 139, 87, 0.12);
+}
+
+.theme-inversionista .tab-btn--active {
+  color: #C09A3A;
+  border-color: rgba(192, 154, 58, 0.70);
+  border-bottom: 3px solid #C09A3A;
+  background: rgba(192, 154, 58, 0.18);
+}
+
+
+.tab-panes {
+  width: 100%;
+}
+
+.tab-pane h3 {
+  margin-top: 0;
+}
+
+/* ---------- Inicio TourInvest ---------- */
+
+
+.home-hero {
+
+  background: var(--azul-oscuro);
+  color: var(--blanco);
+  border-radius: var(--radius);
+  padding: 42px 36px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.home-hero__content {
+  max-width: 780px;
+}
+
+.home-hero__image {
+  width: min(260px, 34%);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--blanco);
+  flex-shrink: 0;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+.eyebrow {
+  display: block;
+  color: #b8d7c6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.home-hero h1 {
+  font-size: 42px;
+  line-height: 1.1;
+  margin: 0 0 14px;
+}
+
+.home-hero p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.home-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.btn-link-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 18px;
+  background: var(--verde);
+  color: var(--blanco);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.btn-link-primary:hover {
+  background: #256e46;
+}
+
+/* ---------- Tarjetas / Grid de contenido ---------- */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.card {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #667;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.card .value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--azul-oscuro);
+}
+
+.card .value-small {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.card .delta.positive {
+  color: var(--verde);
+  font-size: 13px;
+}
+
+.card .delta.negative {
+  color: var(--rojo-error);
+  font-size: 13px;
+}
+
+.cards-grid-compact {
+  margin-bottom: 0;
+}
+
+.card p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.panel {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.panel h3 {
+  color: var(--azul-oscuro);
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  font-size: 14px;
+  border-bottom: 1px solid #eef1f4;
+}
+
+th {
+  color: #667;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tag.alta {
+  background: #fdecea;
+  color: var(--rojo-error);
+}
+
+.tag.media {
+  background: #fff6e0;
+  color: #b57d00;
+}
+
+.tag.baja {
+  background: #eaf6ef;
+  color: var(--verde);
+}
+
+/* Responsive design - adaptable a smartphones, tablets y distintas resoluciones */
+@media (max-width: 900px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .main-content {
+    padding: 18px 20px 24px 20px;
+  }
+
+  .top-header__inner {
+    padding: 12px 14px;
+  }
+
+
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 12px;
+  }
+
+  .sidebar .brand {
+    border: none;
+    margin: 0;
+    padding: 0 12px;
+  }
+
+  .sidebar nav {
+    display: flex;
+  }
+
+  .sidebar nav a {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+  }
+
+  .sidebar nav a.active,
+  .sidebar nav a:hover {
+    border-bottom-color: var(--verde);
+  }
+
+  .sidebar .logout {
+    display: none;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .home-hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-hero__image {
+    width: min(220px, 100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 14px 16px 20px 16px;
+  }
+
+  .auth-card {
+    padding: 24px 18px;
+  }
+
+
+  .top-header__titles p {
+    display: none;
+  }
+
+
+  .home-hero {
+    padding: 30px 22px;
+  }
+
+    .home-hero h1 {
+    font-size: 34px;
+  }
+}
+
+/* ---------- Mensajes globales y errores de campo (auth.js + dashboards) ----------
+   auth.js usa #mensaje-global con clases .mensaje-global--visible / --error / --exito.
+   Los formularios usan .field como envolvente de cada control. */
+.mensaje-global {
+  display: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.mensaje-global.mensaje-global--visible { display: block; }
+.mensaje-global--error  { background: #fdecea; color: var(--rojo-error); }
+.mensaje-global--exito  { background: #eaf6ef; color: var(--verde); }
+.field--error input,
+.field--error select { border-color: var(--rojo-error); }
+
+/* ---------- Mensajes de error por campo (auth.js/registro.html) ---------- */
+.field__mensaje-error {
+  color: var(--rojo-error);
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 14px;
+}
+
+/* ---------- Dashboard: navegación de vistas (.sidebar__link / .vista) ---------- */
+.sidebar__link,
+.sidebar-link,
+.sidebar nav a {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  color: var(--gris-texto);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.sidebar__link:hover,
+.sidebar nav a:hover,
+.sidebar__link--activo,
+.sidebar nav a.active {
+  background: rgba(46, 139, 87, 0.08);
+  border-left-color: var(--verde);
+  color: var(--azul-oscuro);
+}
+
+/* Las vistas del dashboard se alternan con .vista--activa */
+.vista {
+  display: none;
+}
+.vista.vista--activa,
+.view[data-view-pane] {
+  display: block;
+}
+.view[data-view-pane] {
+  display: none;
+}
+.view[data-view-pane]:target,
+.view[data-view-pane].view--activa {
+  display: block;
+}
+
+/* ---------- Dashboard: topbar / user-chip (ya existente, refuerzo) ---------- */
+.top-header__right .user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gris-claro);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+.role-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blanco);
+}
+.role-badge--admin { background: var(--azul-oscuro); }
+.role-badge--analista { background: #2f6fd8; }
+.role-badge--inversionista { background: var(--verde); }
+
+/* ---------- Dashboard: tarjetas de resumen / deltas ---------- */
+.tarjeta {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.tarjeta__etiqueta {
+  font-size: 13px;
+  color: #667;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.tarjeta__valor {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--azul-oscuro);
+  margin: 6px 0 10px;
+}
+.tarjeta__delta {
+  font-size: 13px;
+  font-weight: 600;
+}
+.tarjeta__delta--positivo { color: var(--verde); }
+.tarjeta__delta--negativo { color: var(--rojo-error); }
+
+/* ---------- Dashboard: tablas ---------- */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--blanco);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.tabla th {
+  background: var(--gris-claro);
+  color: #667;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 10px 12px;
+  text-align: left;
+}
+.tabla td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef1f4;
+  font-size: 14px;
+}
+.celda-simbolo { font-family: ui-monospace, monospace; font-weight: 700; color: var(--azul-oscuro); }
+.celda-numero { text-align: right; font-family: ui-monospace, monospace; }
+.estado-vacio {
+  text-align: center;
+  padding: 24px;
+  color: #889;
+  font-style: italic;
+}
+.boton-fila {
+  background: none;
+  border: 1px solid var(--gris-claro);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.boton-fila:hover { background: var(--gris-claro); }
+.boton-fila--cancelar { color: var(--rojo-error); border-color: var(--rojo-error); }
+.boton-fila--cancelar:hover { background: #fdecea; }
+
+/* ---------- Dashboard: estado / pills ---------- */
+.estado-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blanco);
+}
+.estado-pill--activa { background: var(--verde); }
+.estado-pill--cancelada { background: #b8860b; }
+.estado-pill--cumplida { background: #2f6fd8; }
+
+/* ---------- Dashboard: modales ---------- */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.modal--open { display: flex; }
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal__card {
+  position: relative;
+  background: var(--blanco);
+  border-radius: var(--radius);
+  margin: auto;
+  max-width: 520px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 0;
+}
+.modal__header h3 { margin: 0; font-size: 18px; color: var(--azul-oscuro); }
+.modal__close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #889;
+}
+.modal__body { padding: 16px 20px; overflow-y: auto; flex: 1; }
+.modal__footer { padding: 12px 20px 20px; border-top: 1px solid #eef1f4; text-align: right; }
+.modal__footer .btn { min-width: 110px; }
+
+/* ---------- Dashboard: toasts ---------- */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  min-width: 260px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: var(--blanco);
+  font-size: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 1100;
+}
+.toast--success { background: var(--verde); }
+.toast--error { background: var(--rojo-error); }
+.toast--hide { opacity: 0; transform: translateY(8px); }
+/* --- Dashboard (dashboard.js): muestra/oculta del modal + subformularios --- */
+.modal-fondo--visible { display: flex; }
+.subformulario { display: none; }
+.subformulario.subformulario--visible { display: block; }
+
+/* ---------- Gestión de usuarios: buscador (mockup 6.8 - RF13/RF14) ---------- */
+.buscador-usuarios { margin-bottom: 14px; }
+#buscar-usuarios { max-width: 360px; }
+
+/* ---------- Variacion coloreada en tablas (portafolio/empresas) ---------- */
+.etiqueta-variacion { font-family: ui-monospace, monospace; font-weight: 700; }
+.etiqueta-variacion--positiva { color: var(--verde); }
+.etiqueta-variacion--negativa { color: var(--rojo-error); }
+
+/* ---------- Botones genericos usados en el modal de empresa ---------- */
+.btn {
+  display: inline-block;
+  border: 1px solid rgba(30, 58, 95, 0.2);
+  background: var(--blanco);
+  color: var(--azul-oscuro);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn:hover {
+  background: rgba(46, 139, 87, 0.08);
+  border-color: rgba(46, 139, 87, 0.4);
+}
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--verde);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 6px 4px;
+}
+.btn-link:hover { color: #256e46; }
