@@ -182,7 +182,7 @@ function Invoke-RunFrontend {
     $url = "http://localhost:8081/login.html"
     Write-Host "Frontend en $url  (abriendo navegador...)" -ForegroundColor Cyan
     Start-Process $url   # abre el navegador automaticamente
-    Push-Location (Join-Path $Root "frontend")
+    Push-Location (Join-Path $Root "tourinvest")
     try {
         & $script:Python -m http.server 8081
     } finally {
