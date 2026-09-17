@@ -10,6 +10,7 @@ com\tourinvest\backend\repository\ReporteRepository.class
 com\tourinvest\backend\controller\AlertaController.class
 com\tourinvest\backend\controller\EmpresaController.class
 com\tourinvest\backend\model\Usuario.class
+com\tourinvest\backend\dao\UsuarioDAO.class
 com\tourinvest\backend\dto\AlertaRequest.class
 com\tourinvest\backend\dto\PosicionDTO.class
 com\tourinvest\backend\repository\EmpresaRepository.class
@@ -31,15 +32,18 @@ com\tourinvest\backend\repository\NotificacionRepository.class
 com\tourinvest\backend\dto\IndicadorLiquidezResponse.class
 com\tourinvest\backend\controller\AuthController.class
 com\tourinvest\backend\dto\ReporteRequest.class
+com\tourinvest\backend\controller\UsuarioDaoController.class
 com\tourinvest\backend\repository\AlertaRepository.class
 com\tourinvest\backend\dto\ReporteResumenDTO.class
 com\tourinvest\backend\exception\GlobalExceptionHandler.class
 com\tourinvest\backend\dto\RecuperarPasswordRequest.class
+com\tourinvest\servlets\LogoutServlet.class
 com\tourinvest\backend\dto\EmpresaResumenDTO.class
 com\tourinvest\backend\model\Alerta.class
 com\tourinvest\backend\dto\LoginRequest.class
 com\tourinvest\backend\model\Inversion.class
 com\tourinvest\backend\service\AlertaService.class
+com\tourinvest\backend\dao\DatabaseConnection.class
 com\tourinvest\backend\dto\EmpresaDetalleDTO.class
 com\tourinvest\backend\model\Alerta$EstadoAlerta.class
 com\tourinvest\backend\service\AuthService.class
@@ -51,4 +55,5 @@ com\tourinvest\backend\security\JwtAuthFilter.class
 com\tourinvest\backend\model\Empresa.class
 com\tourinvest\backend\dto\RegistroRequest.class
 com\tourinvest\backend\controller\InversionistaController.class
+com\tourinvest\backend\dao\Usuario.class
 com\tourinvest\backend\repository\PortafolioRepository.class

@@ -1,4 +1,23 @@
-const API_BASE_URL = "http://localhost:8080";
+// Configuración central (js/config.js) — sustituye import.meta.env (Vite)
+
+const API_BASE_URL = (window.TourInvestConfig || {}).apiUrl || "http://localhost:8080";
+const API_MODE = (window.TourInvestConfig || {}).apiMode || "api";
+
+const localData = window.LocalData || { users: [] };
+
+async function getUsers() {
+  if (API_MODE === "local") {
+    return localData.users;
+  }
+
+  const response = await fetch(`${API_BASE_URL}/users`);
+
+  if (!response.ok) {
+    throw new Error("Error obteniendo usuarios");
+  }
+
+  return response.json();
+}
 
 function obtenerToken() {
   const token = sessionStorage.getItem("tourinvest_token");
